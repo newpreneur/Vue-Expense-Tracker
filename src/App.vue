@@ -1,18 +1,17 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <transition name="moveInUp">
+      <router-view/>
+    </transition>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import auth from './components/auth.vue'
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
 }
 </script>
 
@@ -24,5 +23,31 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.moveInUp-enter-active{
+  animation: fadeIn 2s ease-in;
+}
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 0.5;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.moveInUp-leave-active{
+  animation: moveInUp .3s ease-in;
+}
+@keyframes moveInUp{
+ 0%{
+  transform: translateY(0);
+ }
+  100%{
+  transform: translateY(-400px);
+ }
 }
 </style>
