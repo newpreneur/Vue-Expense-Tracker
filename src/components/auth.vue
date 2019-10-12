@@ -37,14 +37,14 @@
 
 
 export default {
-  name: 'auth',
+  name: 'Auth',
   props: {
     msg: String
   },
   methods: {
     loginClick: function() {
       console.log("Trying to Logging in!");
-     this.$router.replace({name:'dashboard', params:{ user : "Welcome to Xpense App "+ this.login_username }})
+     this.$router.replace({name:'dashboard', params:{ user : "Hello "+this.login_username}})
     },
     signupClick: function() {
        console.log("Trying to Sign up!");
