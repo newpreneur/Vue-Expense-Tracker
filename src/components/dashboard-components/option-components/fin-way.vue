@@ -1,6 +1,6 @@
 <template >
   <div class="fin-way" v-if="visible">
-    <h1>FINANCIAL TRACJECTORY</h1>
+    <h1>FINANCIAL TRAJECTORY</h1>
   </div>
 </template>
 <script>
