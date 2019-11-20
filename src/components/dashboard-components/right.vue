@@ -24,8 +24,8 @@ import MovieItem from "../movie-item";
 
 import gql from "graphql-tag";
 const GET_LIST = gql`
-      query  getTracks{
-      tracks(limit: 5)   {
+      query  getTracks($date:date!){
+      tracks(where: {Date: {_eq: $date}},limit: 5, order_by: {TimeStamp: desc})   {
       ID
       Expense
       Category
@@ -78,6 +78,9 @@ export default {
      tracks: {
        // graphql query
        query: GET_LIST,
+       variables:{
+            date:'2019-11-20' ,
+                    }
      },
    },
   methods: {
