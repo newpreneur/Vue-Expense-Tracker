@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Auth from '@/components/auth'
 import Dashboard from '@/components/dashboard'
 import Error from '@/components/error'
+import Signup from '@/components/signup'
 
 import FinancialHealth from '@/components/dashboard-components/option-components/fin-health';
 
@@ -25,6 +26,11 @@ export default new Router({
       path: '/auth',
       name: 'auth',
       component: Auth
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: Signup
     },
     {
       path: '/dashboard/:user',

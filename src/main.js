@@ -10,7 +10,7 @@ import VueApollo, { ApolloProvider } from 'vue-apollo';
 Vue.config.productionTip = false
 
 const httpLink = new HttpLink({
-  uri: 'https://sengineering-app.herokuapp.com/v1/graphql'
+  uri: 'https://se-engineering-app.herokuapp.com/v1/graphql'
 });
 
 const apolloClient = new ApolloClient({

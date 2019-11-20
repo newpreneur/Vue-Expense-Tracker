@@ -1,10 +1,7 @@
 <template >
   <div class="dashboard" v-if="visible">
-
   <div class="top-header">
     </div>
-    <!-- <add-movie/>
-   <movies-list/> -->
    <div class='table'>
      <div class='row'>
          <div class='cell'>
@@ -20,7 +17,7 @@
 
 <script>
 
-  import MoviesList from "./movies-list";
+
   import AddMovie from "./add-movie" ;
   import Right from "./dashboard-components/right";
   import RightBottom from "./dashboard-components/right-bottom";
@@ -32,12 +29,10 @@ export default {
     return{
        visible: true,
        user : this.$route.params.user,
-
     }},
     components: {
-      MoviesList,AddMovie, Right, RightTop,RightBottom,
+    AddMovie, Right, RightTop,RightBottom
  },
-
 
 }
 </script>

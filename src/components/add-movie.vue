@@ -15,8 +15,8 @@ import gql from "graphql-tag";
 import { InMemoryCache } from "apollo-cache-inmemory";
 const ADD_MOVIE = gql`
   mutation addMovie(
-    $title: String!
-    $director: String!
+    $id: ID!
+    $expense: String!
     $composer: String!
     $release_date: date!
   ) {

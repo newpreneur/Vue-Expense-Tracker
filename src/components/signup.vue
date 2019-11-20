@@ -3,18 +3,14 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <h1>{{ msg }}</h1>
     <p>
-      This App is built as a part of Software Engineering!
+       Signup for Expense Tracker Application!
     </p>
     <hr>
-    <h3>Login </h3>
-    <ul>
-      <input v-model="Username" type="text" placeholder="Username">
-      <input v-model="Password" type="password" placeholder="Password">
-      <input @click="loginClick" type="submit" value="LOG IN">
-    </ul>
     <h3> Sign Up</h3>
     <ul>
       <ul>
+        <input type="text" placeholder="Username"  v-model="signup_username">
+        <input type="password" placeholder="Password"  v-model="signup_password">
         <input v-on:click="signupClick" type="submit" value="CREATE ACCOUNT">
       </ul>
     </ul>
@@ -33,15 +29,7 @@
 
 <script>
 
-import gql from "graphql-tag";
-const GET_AUTH = gql`
-      query  GetAuth($username: String!,$password: String!){
-        authentication (where: {Username: {_eq: $username},Password: {_eq: $password}} ){
-       Username
-       Password
-      }
-        }
-      `;
+
 export default {
   name: 'Auth',
   props: {
@@ -50,48 +38,17 @@ export default {
   methods: {
     loginClick: function() {
       console.log("Trying to Logging in!");
-
-
-     this.$apollo.addSmartQuery('authentication', {
-         // Same options like above
-         query:GET_AUTH,
-         variables:{
-              username: this.Username,
-              password: this.Password,
-                    }
-       })
-
-       if(this.authentication.length)
-       {
-         this.$router.replace({name:'dashboard', params:{ user : "Hello "+this.Username}})
-       }
-       else {
-
-       }
-  },
+     this.$router.replace({name:'dashboard', params:{ user : "Hello "+this.login_username}})
+    },
     signupClick: function() {
        console.log("Trying to Sign up!");
-       this.$router.push({name:'signup'})
     },
   },
   data: () => ({
      visible: true,
-     authentication:[],
-     Username: '',
-     Password: '',
-
-  }),
-//   apollo: {
-//   authentication: {
-//    query:GET_AUTH,
-//    variables:{
-//         username: "vivek",
-//         password:"123456"
-//               }
-//  },
-//
-// },
-
+     signup_username: '',
+     signup_password: '',
+  })
 }
 </script>
 

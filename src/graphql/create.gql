@@ -1,0 +1,8 @@
+mutation CreateMutation($expense: String!, $category: String!) {
+post(
+  expense: $expense,
+  category: $category,
+) {
+id
+}
+}
