@@ -28,6 +28,30 @@
 </template>
 
 <script>
+import gql from "graphql-tag";
+const ADD_LIST = gql`
+mutation addtracks(
+   $username: String!
+   $password: String!
+ ) {
+   insert_authentication(
+     objects: [
+       {
+         Username: $username
+         Password: $password
+       }
+     ]
+   ) {
+     returning {
+       ID
+       Category
+       Expense
+       Date
+     }
+   }
+ }
+
+`;
 
 
 export default {

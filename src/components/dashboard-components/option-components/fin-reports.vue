@@ -51,7 +51,7 @@ export default {
     this.$apollo.query({
         query:GET_LIST,
         variables:{
-             date:'2019-11-19' ,
+             date:'2019-11-20' ,
                      }
       }).then( result =>
       this.tracks=result.data.tracks,

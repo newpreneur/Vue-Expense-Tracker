@@ -37,6 +37,7 @@ import gql from "graphql-tag";
 const GET_AUTH = gql`
       query  GetAuth($username: String!,$password: String!){
         authentication (where: {Username: {_eq: $username},Password: {_eq: $password}} ){
+       ID
        Username
        Password
       }
@@ -50,17 +51,15 @@ export default {
   methods: {
     loginClick: function() {
       console.log("Trying to Logging in!");
-
-
      this.$apollo.addSmartQuery('authentication', {
          // Same options like above
          query:GET_AUTH,
          variables:{
               username: this.Username,
               password: this.Password,
-                    }
+              }
        })
-
+console.log(this.$apolloData)
        if(this.authentication.length)
        {
          this.$router.replace({name:'dashboard', params:{ user : "Hello "+this.Username}})
