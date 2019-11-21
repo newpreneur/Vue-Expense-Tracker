@@ -63,6 +63,9 @@ export default {
     loginClick: function() {
       console.log("Trying to Logging in!");
      this.$router.replace({name:'dashboard', params:{ user : "Hello "+this.login_username}})
+
+
+
     },
     signupClick: function() {
        console.log("Trying to Sign up!");
