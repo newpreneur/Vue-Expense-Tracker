@@ -7,11 +7,7 @@
       <input @click="SalaryClick" type="submit" value="SUBMIT">
     </ul>
     <div>
-    <vue-loader direction="middle" image="https://loading.io/spinners/coolors/lg.palette-rotating-ring-loader.gif" text="Loading..." text-color="#786fa6" />
-    <loader :color="'#cf6a87'" :borderWidth="5" :duration="1.5" :size="25" :background="'#f5cd79'" />
-    <loader :color="'#f5cd79'" :borderWidth="10" :duration="1" :size="70" :background="'#778beb'" />
-    <loader :color="'#778beb'" :borderWidth="20" :duration=".5" :size="100" :background="'#cf6a87'" />
-    <loader-dots :color="'#f5cd79'" :background="'#ea8685'" :duration="1" :size="15" />
+
   </div>
     <!-- Header -->
     <div class="container">
@@ -65,13 +61,7 @@
 <script>
 
 import gql from "graphql-tag";
-import Loading from 'vue-loading-overlay';
-    // Import stylesheet
-import 'vue-loading-overlay/dist/vue-loading.css';
 
-import vueLoader from '@nulldreams/vue-loading/src/vue-loading'
-import loader from '@nulldreams/vue-loading/src/components/loader'
-import loaderDots from '@nulldreams/vue-loading/src/components/dots'
 
 const FOODAGG = gql`
       query  getAggregates($user:Int!){
@@ -98,9 +88,9 @@ export default {
       isLoading: true,
       fullPage: true,
        visible: true,
-       food:false,
+       food:true,
        housing:false,
-       transportation:false,
+       transportation:true,
        clothing:false,
        utilities:false,
        savings:false,
