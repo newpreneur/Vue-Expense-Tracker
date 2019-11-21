@@ -22,17 +22,16 @@ export default {
  },
  methods: {
    HealthClick: function() {
-
-    this.$router.push({name:'financialhealth'})
+    this.$router.push({name:'financialhealth',params:{ user : this.$route.params.user}})
   },
   SmartClick: function() {
-   this.$router.push({name:'smartbudget'})
+   this.$router.push({name:'smartbudget',params:{ user : this.$route.params.user}})
  },
  TrajectoryClick: function() {
-  this.$router.push({name:'financialtrajectory'})
+  this.$router.push({name:'financialtrajectory',params:{ user : this.$route.params.user}})
 },
 ReportsClick: function() {
- this.$router.push({name:'financialreports'})
+ this.$router.push({name:'financialreports',params:{ user : this.$route.params.user}})
 },
  },
 

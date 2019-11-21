@@ -1,18 +1,19 @@
 <template >
   <div class="left" v-if="visible">
-    <h1>Expense Store</h1>
+    <h1>Expense Store </h1>
     <ul>
     <input type="text" placeholder="Expense"  v-model="Expense">
     <select v-model="Category">
     <option disabled value="Category">Please select Category</option>
-    <option>Food</option>
-    <option>Travel</option>
-    <option>Shopping</option>
-    <option>Lifestyle</option>
-    <option>Debit</option>
-    <option>Credit</option>
+    <option>Housing</option>
     <option>Utilities</option>
-    <option>Others</option>
+    <option>Transportation</option>
+    <option>Savings</option>
+    <option>Debt Repayment</option>
+    <option>Food</option>
+    <option>Clothing</option>
+    <option>Medical</option>
+    <option>Descretionary</option>
      </select>
       <input v-on:click="post" type="submit" value="ADD">
     </ul>
@@ -21,11 +22,11 @@
 </template>
 <script>
 import MovieItem from "../movie-item";
-
+import moment from "moment";
 import gql from "graphql-tag";
 const GET_LIST = gql`
-      query  getTracks($date:date!){
-      tracks(where: {Date: {_eq: $date}},limit: 5, order_by: {TimeStamp: desc})   {
+      query  getTracks($date:date!,$user:Int!){
+      tracks(where: {Date: {_eq: $date}, UserID :{_eq: $user}},limit: 5, order_by: {TimeStamp: desc})   {
       ID
       Expense
       Category
@@ -37,12 +38,14 @@ const ADD_LIST = gql`
 mutation addtracks(
    $Expense: Int!
    $Category: String!
+   $User:Int!
  ) {
    insert_tracks(
      objects: [
        {
          Expense: $Expense
          Category: $Category
+         UserID:$User
        }
      ]
    ) {
@@ -65,8 +68,9 @@ export default {
     return{
        visible: true,
        tracks: [],
-       Category: 'Others',
+       Category: 'Food',
        Expense:'',
+       UserID: this.$route.params.user,
     }},
     components: {
       MovieItem
@@ -78,21 +82,29 @@ export default {
      tracks: {
        // graphql query
        query: GET_LIST,
-       variables:{
-            date:'2019-11-20' ,
-                    }
+       variables(){
+         return{
+            // date:'2019-11-20' ,
+            date:moment().format('YYYY-MM-DD') ,
+            user: Number (this.UserID),
+          }
+                  }
      },
    },
   methods: {
+
     post: function () {
+         console.log(moment().format('YYYY-MM-DD').toString());
     const { Expense, Category } = this.$data
+    const User= Number(this.UserID)
     this.Expense='',
-    this.Category='Others',
+    this.Category='Food',
     this.$apollo.mutate({
       mutation: ADD_LIST,
       variables: {
         Expense,
         Category,
+        User,
       },
        refetchQueries: ["getTracks"]
     })

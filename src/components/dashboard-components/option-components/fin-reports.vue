@@ -23,8 +23,8 @@ import gql from "graphql-tag";
 import moment from "moment";
 // moment().format('YYYY-MM-DD')
 const GET_LIST = gql`
-      query  getTracks($date:date!){
-      tracks (where: {Date: {_eq: $date}} )  {
+      query  getTracks($date:date!,$user:Int!){
+      tracks (where: {Date: {_eq: $date},UserID:{_eq: $user}} )  {
       ID
       Expense
       Category
@@ -47,11 +47,13 @@ export default {
  methods: {
    Click: function() {
      this.visible=true,
+     // const user= Number(this.$route.params.user)
      console.log("Trying to Logging in!");
     this.$apollo.query({
         query:GET_LIST,
         variables:{
              date:'2019-11-20' ,
+             user:Number(this.$route.params.user),
                      }
       }).then( result =>
       this.tracks=result.data.tracks,

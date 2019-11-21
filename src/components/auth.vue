@@ -1,7 +1,6 @@
 <template >
   <div class="auth" v-if="visible">
     <img alt="Vue logo" src="../assets/logo.png">
-    <h1>{{ msg }}</h1>
     <p>
       This App is built as a part of Software Engineering!
     </p>
@@ -45,9 +44,6 @@ const GET_AUTH = gql`
       `;
 export default {
   name: 'Auth',
-  props: {
-    msg: String
-  },
   methods: {
     loginClick: function() {
       console.log("Trying to Logging in!");
@@ -62,10 +58,9 @@ export default {
 console.log(this.$apolloData)
        if(this.authentication.length)
        {
-         this.$router.replace({name:'dashboard', params:{ user : "Hello "+this.Username}})
+         this.$router.replace({name:'dashboard', params:{ user : this.authentication[0].ID}})
        }
        else {
-
        }
   },
     signupClick: function() {
