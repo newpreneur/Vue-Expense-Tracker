@@ -79,9 +79,6 @@ const FOODAGG = gql`
 export default {
   name: 'financialhealth',
   components: {
-       vueLoader,
-       loader,
-       loaderDots
    },
   data(){
     return{
