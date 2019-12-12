@@ -345,7 +345,8 @@ created: function () {
                       `,
                   variables:{
                         user: Number (this.$route.params.user),
-                               }
+                      },
+                        pollInterval: 300, // ms
                 }).then( result =>
                 this.clothingagg=result.data.tracks_aggregate.aggregate.sum,
               )

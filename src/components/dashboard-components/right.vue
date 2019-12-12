@@ -26,7 +26,7 @@ import moment from "moment";
 import gql from "graphql-tag";
 const GET_LIST = gql`
       query  getTracks($date:date!,$user:Int!){
-      tracks(where: {Date: {_eq: $date}, UserID :{_eq: $user}},limit: 5, order_by: {TimeStamp: asc})   {
+      tracks(where: {Date: {_eq: $date}, UserID :{_eq: $user}},limit: 20, order_by: {TimeStamp: asc})   {
       ID
       Expense
       Category
@@ -84,11 +84,13 @@ export default {
        query: GET_LIST,
        variables(){
          return{
-            date:'2019-11-21' ,
+            date:'2019-11-22' ,
             // date:moment().format('YYYY-MM-DD') ,
             user: Number (this.UserID),
           }
-                  }
+
+        },
+          pollInterval: 300, // ms
      },
    },
   methods: {

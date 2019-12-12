@@ -1,11 +1,11 @@
 <template >
   <div class="fin-budget" v-if="visible">
 
-    <h1>SMART BUDGET</h1>
-    <ul>
+    <h1>FINANCIAL HEALTH</h1>
+    <!-- <ul>
       <input v-model="Salary" type="number" placeholder="Enter your Salary">
       <input @click="SalaryClick" type="submit" value="SUBMIT">
-    </ul>
+    </ul> -->
     <div>
 
   </div>
@@ -208,6 +208,7 @@ created: function () {
   )
   //real
 
+
     this.$apollo.query({
       query:gql`
             query  getAggregates($user:Int!){
@@ -223,7 +224,8 @@ created: function () {
             `,
         variables:{
               user: Number (this.$route.params.user),
-                     }
+            },
+              pollInterval: 300,
       }).then( result =>
       this.discretionaryagg=result.data.tracks_aggregate.aggregate.sum,
     )

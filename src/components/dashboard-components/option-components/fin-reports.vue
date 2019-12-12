@@ -52,9 +52,10 @@ export default {
     this.$apollo.query({
         query:GET_LIST,
         variables:{
-             date:'2019-11-20' ,
+             date:'2019-11-22' ,
              user:Number(this.$route.params.user),
-                     }
+           },
+             // pollInterval: 300, // ms
       }).then( result =>
       this.tracks=result.data.tracks,
      )

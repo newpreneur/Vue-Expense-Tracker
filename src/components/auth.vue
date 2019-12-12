@@ -2,7 +2,7 @@
   <div class="auth" v-if="visible">
     <img alt="Vue logo" src="../assets/logo.png">
     <p>
-      This App is built as a part of Software Engineering!
+      This App is built as a part of WebTech ||!
     </p>
     <hr>
     <h3>Login </h3>
@@ -17,16 +17,9 @@
         <input v-on:click="signupClick" type="submit" value="CREATE ACCOUNT">
       </ul>
     </ul>
-    <h3>Developers</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">Burada Vivek</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">Devang Shetty</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">Chetan Nyamagoud</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">Dhanush</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">Chandan Bhatt</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">Bharath</a></li>
-    </ul>
-    <a id="github" href="https://router.vuejs.org" target="_blank" rel="noopener">View on GitHub</a>
+
+
+
   </div>
 </template>
 
